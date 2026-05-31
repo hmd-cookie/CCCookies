@@ -9,8 +9,7 @@ export default function AboutSection() {
           What Makes Our Cookies Special
         </h2>
         <p className="mt-4 text-lg text-hazelnut">
-          It&apos;s not complicated. We use real ingredients, no preservatives,
-          and a recipe perfected over years of baking.
+          100% eggless, vegetarian, and vegan-friendly. Made with real ingredients — no preservatives, no shortcuts.
         </p>
 
         <div className="mt-12 grid gap-8 sm:grid-cols-3">
@@ -34,8 +33,8 @@ export default function AboutSection() {
               Premium Ingredients
             </h3>
             <p className="mt-2 text-sm text-hazelnut">
-              Real butter, free-range eggs, Belgian chocolate, and organic flour.
-              Nothing artificial.
+              100% eggless. Made with rich dark chocolate, salted butter, and
+              premium flour. Nothing artificial.
             </p>
           </div>
 
@@ -59,8 +58,8 @@ export default function AboutSection() {
               Baked Fresh Daily
             </h3>
             <p className="mt-2 text-sm text-hazelnut">
-              Every batch is made to order. Your cookie is baked the day it ships,
-              guaranteed.
+              Every batch is baked fresh — only after you place your order.
+              Homemade, by hand, from scratch.
             </p>
           </div>
 

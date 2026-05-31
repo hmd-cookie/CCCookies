@@ -1,23 +1,21 @@
 export const SITE_NAME = "CCCookies"
-export const SITE_TAGLINE = "Homemade chocolate chip cookies, baked with love"
+export const SITE_TAGLINE = "Eggless chocolate chip cookies, baked fresh on order"
 
 export const PRODUCT = {
   id: "ccc-original",
-  name: "Classic Chocolate Chip Cookie",
+  name: "Classic Dark Chocolate Chip Cookie",
   description:
-    "Our signature homemade chocolate chip cookie. Baked golden brown with premium dark chocolate chunks and a hint of vanilla. Crispy on the edges, chewy in the center.",
+    "Eggless, vegetarian, and vegan-friendly. Each batch is baked fresh — only after you place your order. We use rich dark chocolate (70% cocoa) for that deep, indulgent taste. No eggs. No compromises. Just a perfectly chewy, homemade cookie crafted from scratch.",
   price: 4.99,
   currency: "USD",
   weight: "120g",
   ingredients: [
-    "Premium dark chocolate chunks",
-    "Unsalted butter",
+    "Dark chocolate chunks (70% cocoa)",
+    "All-purpose flour",
+    "Salted butter",
+    "Condensed milk",
     "Brown sugar",
-    "Free-range eggs",
-    "Vanilla extract",
-    "Organic all-purpose flour",
-    "Baking soda",
-    "Sea salt",
+    "Baking essentials",
   ],
 }
 

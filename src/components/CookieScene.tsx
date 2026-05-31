@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
 
 export default function CookieScene() {
@@ -39,6 +39,7 @@ export default function CookieScene() {
             fill
             className="object-contain drop-shadow-2xl"
             priority
+            unoptimized
           />
         </div>
         <div className="absolute -bottom-4 left-1/2 h-4 w-3/4 -translate-x-1/2 rounded-full bg-espresso/10 blur-xl animate-pulse-slow" />

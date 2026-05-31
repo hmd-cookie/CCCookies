@@ -10,7 +10,7 @@ export default function CookieHero() {
   const handleAddToCart = () => {
     addItem({
       id: "ccc-original",
-      name: "Classic Chocolate Chip Cookie",
+      name: "Classic Dark Chocolate Chip Cookie",
       price: 4.99,
       quantity: 1,
     })
@@ -30,7 +30,7 @@ export default function CookieHero() {
             {SITE_TAGLINE}
           </p>
           <p className="mt-2 text-sm text-hazelnut/70">
-            Every batch baked fresh. No shortcuts. Just butter, sugar, and love.
+            Eggless &bull; Vegetarian &bull; Baked fresh after you order
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:items-start">
             <button
