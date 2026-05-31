@@ -3,20 +3,20 @@
 ## Phase 1: Foundation (Build)
 - [x] TRACKING.md created
 - [x] Initialize Next.js 15 + Tailwind + R3F + Zustand
-- [ ] Procedural 3D chocolate chip cookie (R3F, drag-to-rotate, soft lighting)
-- [ ] Hero section with warm light theme + cookie centerpiece
-- [ ] Logo + brand identity design
-- [ ] Site layout (navbar, footer, page sections)
-- [ ] Shopping cart (Zustand, mock product, add/remove/persist)
+- [x] Procedural 3D chocolate chip cookie (R3F, drag-to-rotate, soft lighting)
+- [x] Hero section with warm light theme + cookie centerpiece
+- [x] Logo + brand identity design (via wordmark, phase 1)
+- [x] Site layout (navbar, footer, page sections)
+- [x] Shopping cart (Zustand, mock product, add/remove/persist)
+- [ ] Push to GitHub repo (pushed)
 - [ ] Deploy to Vercel (free .vercel.app domain)
-- [ ] Push to GitHub repo (hmd-cookie/CCCookies)
 
 ## Phase 2: Storefront Polish
 - [ ] Product catalog page
 - [ ] Product detail page with interactive 3D viewer
 - [ ] Responsive design across all breakpoints
 - [ ] Add actual product photos (from user)
-- [ ] Add actual product details, price, description (from user)
+- [ ] Add actual product details (price, description, ingredients)
 
 ## Phase 3: Payments & Auth
 - [ ] Stripe account + API keys (test mode)
@@ -44,7 +44,7 @@
 ---
 
 ### Notes
-- Logo & branding handled by developer
 - Color palette: Light warm earthy (#FBF3EA / #D4A574 / #A67C52)
 - Email for receipts: hmd.cookie@protonmail.com
 - Repo: https://github.com/hmd-cookie/CCCookies
+- Dev server: http://localhost:3000

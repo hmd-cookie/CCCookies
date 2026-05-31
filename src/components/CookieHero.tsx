@@ -1,17 +1,8 @@
 "use client"
 
-import dynamic from "next/dynamic"
+import CookieScene from "@/components/CookieScene"
 import { SITE_NAME, SITE_TAGLINE } from "@/lib/constants"
 import { useCart } from "@/store/cart"
-
-const CookieScene = dynamic(() => import("@/components/CookieScene"), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-full items-center justify-center">
-      <div className="h-32 w-32 animate-pulse rounded-full bg-beige" />
-    </div>
-  ),
-})
 
 export default function CookieHero() {
   const { addItem, openCart } = useCart()

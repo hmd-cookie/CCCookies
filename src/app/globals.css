@@ -21,3 +21,21 @@ body {
   background: var(--color-cream);
   color: var(--color-espresso);
 }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.25; transform: translateX(-50%) scale(0.9); }
+}
+
+@utility animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@utility animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
