@@ -2,21 +2,8 @@
 
 import CookieScene from "@/components/CookieScene"
 import { SITE_NAME, SITE_TAGLINE } from "@/lib/constants"
-import { useCart } from "@/store/cart"
 
 export default function CookieHero() {
-  const { addItem, openCart } = useCart()
-
-  const handleAddToCart = () => {
-    addItem({
-      id: "ccc-original",
-      name: "Classic Dark Chocolate Chip Cookie",
-      price: 4.99,
-      quantity: 1,
-    })
-    openCart()
-  }
-
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20">
       <div className="absolute inset-0 bg-gradient-to-b from-cream via-beige/30 to-cream pointer-events-none" />
@@ -33,12 +20,12 @@ export default function CookieHero() {
             Eggless &bull; Vegetarian &bull; Baked fresh after you order
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:items-start">
-            <button
-              onClick={handleAddToCart}
+            <a
+              href="#order"
               className="rounded-full bg-tan px-8 py-3 text-base font-semibold text-espresso transition-colors hover:bg-caramel"
             >
-              Add to Cart — $4.99
-            </button>
+              Order Now
+            </a>
             <a
               href="#about"
               className="rounded-full border border-tan px-8 py-3 text-base font-medium text-hazelnut transition-colors hover:bg-beige"

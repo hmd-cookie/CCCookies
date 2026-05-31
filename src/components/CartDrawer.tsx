@@ -1,10 +1,9 @@
 "use client"
 
 import { useCart } from "@/store/cart"
-import { PRODUCT } from "@/lib/constants"
 
 export default function CartDrawer() {
-  const { items, isOpen, closeCart, removeItem, updateQuantity, totalPrice } =
+  const { items, isOpen, closeCart, removeItem, updateQuantity, totalPrice, hydrated } =
     useCart()
 
   return (
@@ -41,7 +40,7 @@ export default function CartDrawer() {
         </div>
 
         <div className="flex-1 overflow-y-auto px-6 py-4">
-          {items.length === 0 ? (
+          {!hydrated ? null : items.length === 0 ? (
             <div className="mt-20 text-center">
               <p className="text-hazelnut">Your cart is empty</p>
               <p className="mt-1 text-sm text-hazelnut/70">
@@ -104,7 +103,7 @@ export default function CartDrawer() {
           )}
         </div>
 
-        {items.length > 0 && (
+        {hydrated && items.length > 0 && (
           <div className="border-t border-beige px-6 py-4">
             <div className="mb-4 flex items-center justify-between">
               <span className="font-semibold text-espresso">Total</span>

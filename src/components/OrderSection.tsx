@@ -1,73 +1,93 @@
 "use client"
 
-import { PRODUCT } from "@/lib/constants"
+import { PACKS } from "@/lib/constants"
 import { useCart } from "@/store/cart"
 
 export default function OrderSection() {
   const { addItem, openCart } = useCart()
 
-  const handleAdd = () => {
+  const handleAdd = (pack: (typeof PACKS)[number]) => {
     addItem({
-      id: PRODUCT.id,
-      name: PRODUCT.name,
-      price: PRODUCT.price,
+      id: pack.id,
+      name: pack.name,
+      price: pack.price,
       quantity: 1,
     })
     openCart()
   }
 
   return (
-    <section
-      id="order"
-      className="border-t border-beige px-6 py-24"
-    >
-      <div className="mx-auto max-w-4xl text-center">
+    <section id="order" className="border-t border-beige px-6 py-24">
+      <div className="mx-auto max-w-6xl text-center">
         <h2 className="text-3xl font-bold text-espresso sm:text-4xl">
-          Ready to Order?
+          Choose Your Pack
         </h2>
         <p className="mt-4 text-lg text-hazelnut">
-          One size. One perfect cookie. All you need to decide is how many.
+          Baked fresh after you order. Eggless, vegetarian, and always delicious.
         </p>
 
-        <div className="mx-auto mt-12 max-w-sm rounded-2xl border border-beige bg-cream p-8 shadow-sm">
-          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-tan/10">
-            <svg
-              className="h-10 w-10 text-tan"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="1.5"
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {PACKS.map((pack) => (
+            <div
+              key={pack.id}
+              className={`relative rounded-2xl border-2 bg-cream p-8 text-left shadow-sm transition-shadow hover:shadow-md ${
+                pack.popular
+                  ? "border-caramel ring-1 ring-caramel/20"
+                  : "border-beige"
+              }`}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"
-              />
-            </svg>
-          </div>
+              {pack.popular && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-caramel px-4 py-1 text-xs font-semibold text-espresso shadow-sm">
+                  Most Popular
+                </span>
+              )}
 
-          <h3 className="mt-6 text-xl font-semibold text-espresso">
-            {PRODUCT.name}
-          </h3>
-          <p className="mt-2 text-sm text-hazelnut">{PRODUCT.description}</p>
+              <div className="mb-4">
+                <p className="text-sm font-medium uppercase tracking-wider text-hazelnut">
+                  {pack.cookieCount} cookies
+                </p>
+                <h3 className="mt-1 text-xl font-bold text-espresso">
+                  {pack.name}
+                </h3>
+              </div>
 
-          <div className="mt-4 flex items-center justify-center gap-4 text-sm text-hazelnut">
-            <span>{PRODUCT.weight}</span>
-            <span className="text-beige">|</span>
-            <span>{PRODUCT.ingredients.length} ingredients</span>
-          </div>
+              <p className="mb-6 text-sm leading-relaxed text-hazelnut">
+                {pack.description}
+              </p>
 
-          <p className="mt-6 text-3xl font-bold text-espresso">
-            ${PRODUCT.price.toFixed(2)}
-          </p>
+              <div className="mb-6">
+                <p className="text-3xl font-bold text-espresso">
+                  ${pack.price.toFixed(2)}
+                </p>
+                <p className="mt-1 text-sm text-hazelnut">
+                  ${pack.perCookie.toFixed(2)} per cookie
+                </p>
+              </div>
 
-          <button
-            onClick={handleAdd}
-            className="mt-6 w-full rounded-full bg-tan px-8 py-3 text-base font-semibold text-espresso transition-colors hover:bg-caramel"
-          >
-            Add to Cart
-          </button>
+              {pack.savings && (
+                <p className="mb-4 text-sm font-medium text-green-700">
+                  {pack.savings}
+                </p>
+              )}
+
+              <button
+                onClick={() => handleAdd(pack)}
+                className={`w-full rounded-full px-6 py-3 text-base font-semibold transition-colors ${
+                  pack.popular
+                    ? "bg-tan text-espresso hover:bg-caramel"
+                    : "border-2 border-tan text-espresso hover:bg-beige"
+                }`}
+              >
+                Add to Cart
+              </button>
+            </div>
+          ))}
         </div>
+
+        <p className="mt-10 text-sm text-hazelnut/60">
+          All cookies are baked fresh after your order is placed. We use real butter,
+          70% dark chocolate, and no eggs — ever.
+        </p>
       </div>
     </section>
   )

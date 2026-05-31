@@ -3,8 +3,8 @@
 import { useCart } from "@/store/cart"
 
 export default function CartButton() {
-  const { toggleCart, totalItems } = useCart()
-  const count = totalItems()
+  const { toggleCart, totalItems, hydrated } = useCart()
+  const count = hydrated ? totalItems() : 0
 
   return (
     <button

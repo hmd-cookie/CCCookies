@@ -12,6 +12,7 @@ export type CartItem = {
 type CartStore = {
   items: CartItem[]
   isOpen: boolean
+  hydrated: boolean
   addItem: (item: CartItem) => void
   removeItem: (id: string) => void
   updateQuantity: (id: string, quantity: number) => void
@@ -28,6 +29,7 @@ export const useCart = create<CartStore>()(
     (set, get) => ({
       items: [],
       isOpen: false,
+      hydrated: false,
 
       addItem: (item) => {
         const existing = get().items.find((i) => i.id === item.id)
@@ -71,6 +73,11 @@ export const useCart = create<CartStore>()(
       openCart: () => set({ isOpen: true }),
       closeCart: () => set({ isOpen: false }),
     }),
-    { name: "cccookies-cart" },
+    {
+      name: "cccookies-cart",
+      onRehydrateStorage: () => () => {
+        useCart.setState({ hydrated: true })
+      },
+    },
   ),
 )
