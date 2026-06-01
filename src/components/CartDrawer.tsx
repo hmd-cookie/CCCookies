@@ -111,12 +111,13 @@ export default function CartDrawer() {
                 ${totalPrice().toFixed(2)}
               </span>
             </div>
-            <button
-              onClick={() => alert("Checkout coming in Phase 3!")}
-              className="w-full rounded-full bg-tan px-6 py-3 font-medium text-espresso transition-colors hover:bg-caramel"
+            <a
+              href="/checkout"
+              onClick={closeCart}
+              className="block w-full rounded-full bg-tan px-6 py-3 text-center font-medium text-espresso transition-colors hover:bg-caramel"
             >
               Proceed to Checkout
-            </button>
+            </a>
           </div>
         )}
       </div>

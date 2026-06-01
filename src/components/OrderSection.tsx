@@ -1,19 +1,50 @@
 "use client"
 
-import { PACKS } from "@/lib/constants"
+import { useEffect, useState } from "react"
 import { useCart } from "@/store/cart"
+
+type Pack = {
+  id: string
+  name: string
+  cookie_count: number
+  price: number
+  description: string
+  popular: boolean
+  savings: string | null
+}
 
 export default function OrderSection() {
   const { addItem, openCart } = useCart()
+  const [packs, setPacks] = useState<Pack[]>([])
+  const [loading, setLoading] = useState(true)
 
-  const handleAdd = (pack: (typeof PACKS)[number]) => {
+  useEffect(() => {
+    fetch("/api/packs")
+      .then((r) => r.json())
+      .then((data) => {
+        if (Array.isArray(data)) setPacks(data)
+      })
+      .finally(() => setLoading(false))
+  }, [])
+
+  const handleAdd = (pack: Pack) => {
     addItem({
       id: pack.id,
       name: pack.name,
-      price: pack.price,
+      price: pack.price / 100, // convert cents to dollars for display
       quantity: 1,
     })
     openCart()
+  }
+
+  if (loading) {
+    return (
+      <section id="order" className="border-t border-beige px-6 py-24">
+        <div className="mx-auto max-w-6xl text-center">
+          <p className="text-hazelnut">Loading packs...</p>
+        </div>
+      </section>
+    )
   }
 
   return (
@@ -27,7 +58,7 @@ export default function OrderSection() {
         </p>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {PACKS.map((pack) => (
+          {packs.map((pack) => (
             <div
               key={pack.id}
               className={`relative rounded-2xl border-2 bg-cream p-8 text-left shadow-sm transition-shadow hover:shadow-md ${
@@ -44,7 +75,7 @@ export default function OrderSection() {
 
               <div className="mb-4">
                 <p className="text-sm font-medium uppercase tracking-wider text-hazelnut">
-                  {pack.cookieCount} cookies
+                  {pack.cookie_count} cookies
                 </p>
                 <h3 className="mt-1 text-xl font-bold text-espresso">
                   {pack.name}
@@ -57,10 +88,10 @@ export default function OrderSection() {
 
               <div className="mb-6">
                 <p className="text-3xl font-bold text-espresso">
-                  ${pack.price.toFixed(2)}
+                  ${(pack.price / 100).toFixed(2)}
                 </p>
                 <p className="mt-1 text-sm text-hazelnut">
-                  ${pack.perCookie.toFixed(2)} per cookie
+                  ${(pack.price / 100 / pack.cookie_count).toFixed(2)} per cookie
                 </p>
               </div>
 

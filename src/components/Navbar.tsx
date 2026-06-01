@@ -21,6 +21,12 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <a
+            href="/track"
+            className="text-sm font-medium text-hazelnut transition-colors hover:text-espresso"
+          >
+            Track Order
+          </a>
         </div>
 
         <CartButton />
